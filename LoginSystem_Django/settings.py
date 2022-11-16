@@ -42,6 +42,7 @@ INSTALLED_APPS = [
 
     'rest_framework',
 
+
 ]
 
 MIDDLEWARE = [
@@ -85,6 +86,11 @@ DATABASES = {
     }
 }
 
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    )
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -117,6 +123,14 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'msireesha30031999@gmail.com'
+EMAIL_HOST_PASSWORD = 'jxmrfxyhmuyqberq'
 
 
 # Static files (CSS, JavaScript, Images)

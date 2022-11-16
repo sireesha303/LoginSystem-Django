@@ -30,3 +30,30 @@ class UserRegisterSerializer(serializers.ModelSerializer):
         user.save()
         return user
 
+
+class PasswordResetSerializer(serializers.ModelSerializer):
+    password = serializers.CharField(max_length=100)
+    password2 = serializers.CharField(max_length=100)
+
+    class Meta:
+        model = User
+        fields = ['password', 'password2']
+
+    def validate(self, attrs):
+        if attrs['password'] != attrs['password2']:
+            raise serializers.ValidationError(
+                {"password": "Password fields didn't match."})
+
+        return attrs
+
+    def update(self, instance, validated_data):
+        user = instance
+        user.set_password(validated_data['password'])
+        user.save()
+        return user
+
+
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ('id', 'username', 'email')
