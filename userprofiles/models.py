@@ -4,6 +4,7 @@ import uuid
 
 
 class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     username = models.CharField(max_length=200, null=False, blank=False)
     email = models.EmailField(null=False, blank=False)
     first_name = models.CharField(null=True, blank=True, max_length=100)
