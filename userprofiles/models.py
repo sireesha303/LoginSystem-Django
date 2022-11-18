@@ -9,6 +9,7 @@ class Profile(models.Model):
     email = models.EmailField(null=False, blank=False)
     first_name = models.CharField(null=True, blank=True, max_length=100)
     last_name = models.CharField(null=True, blank=True, max_length=100)
+    image = models.ImageField(null=True, blank=True, upload_to='profiles/')
     git_url = models.CharField(null=True, blank=True, max_length=100)
     linkedin_url = models.CharField(null=True, blank=True, max_length=100)
     created = models.DateTimeField(auto_now_add=True)
@@ -16,3 +17,5 @@ class Profile(models.Model):
 
     def __str__(self):
         return self.username
+
+
