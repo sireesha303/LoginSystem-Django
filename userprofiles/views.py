@@ -41,7 +41,7 @@ def register_user(request):
     serializer = UserRegisterSerializer(data=request.data)
     if serializer.is_valid(raise_exception=True):
         serializer.save()
-    return Response(serializer.data)
+    return Response(serializer.data, status=status.HTTP_201_CREATED)
 
 
 @api_view(['POST'])
